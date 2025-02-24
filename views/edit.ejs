@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/logo.png">
+    <link rel="stylesheet" href="/style1.css">
+    <title>WhatsApp</title>
+</head>
+<body>
+    <h2>  <%= ch.from %> Edit Your Chat</h2>
+    <form action="/chats/<%= ch._id %>?_method=PUT" method="POST">
+        <textarea name="message" rows="5" cols="30" class="mes"><%= ch.message %></textarea>
+        <button type="submit">Edit</button>
+    </form> 
+</body>
+</html>

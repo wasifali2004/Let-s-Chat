@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/logo.png">
+    <title>Watsapp</title>
+</head>
+<body>
+    <div class="top">
+        <h2>All Chats</h2>
+        <form action="/chats/send" method="GET">
+            <button> Message</button>
+        </form>
+    </div>
+    <% for(let c of com) { %>      
+            <div class="chats">
+                <p><span>From:</span> <%= c.from %> </p>
+                <p><span>Recieved By:</span> <%= c.to %> </p>
+                <div class="msg">
+                    <div>
+                        <p> <%= c.message %> </p>
+                        <div class="btns">
+                            <form action="/chats/<%=c._id%>/edit" method="GET">
+                                <button type="submit" class="btn">Edit</button>
+                            </form>
+                            <form action="/chats/<%=c._id%>?_method=DELETE" method="POST">
+                                <button class="btn" style="background-color: red;">Delete</button>
+                            </form>
+                        </div>  
+                    </div>
+                   
+                    <div class="date">
+                        <h3><%=c.created_At.toString().split(" ")[4] %> </h3>
+                        <h3> <%= c.created_At.toString().split(" ").slice(0,4).join("-") %> </h3>
+                    </div>
+                     
+                </div>     
+                
+            </div>
+            <hr> 
+    <% } %>
+</body>
+</html>
+
